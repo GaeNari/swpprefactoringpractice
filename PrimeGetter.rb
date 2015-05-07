@@ -1,31 +1,36 @@
 class PrimeGetter
-  def self.prime_not_upper_than(n)
-    unless n.is_a? Integer
+  attr_accessor :number
+  def initialize(n)
+    @number = n
+  end
+
+  def prime_not_upper_than()
+    unless @number.is_a? Integer
       puts "n must be an integer."
       return nil
     end
-    if n < 0
+    if @number < 0
       puts "n must be greater than 0."
       return nil
     end
-    ar = [2]
-    i = 3
-    while (i < n) do
-      ip = true
-      ar.each do |a|
-        if (i % a == 0)
-          ip = false
+    array = [2]
+    iter = 3
+    while (iter < @number) do
+      is_prime = true
+      array.each do |a|
+        if (iter % a == 0)
+          is_prime = false
           break
-        elsif (a > Math.sqrt(i))
+        elsif (a > Math.sqrt(iter))
           break
         end
       end
-      if(ip)
-        ar.push(i)
+      if(is_prime)
+        array.push(iter)
       end
-      i = i+1
+      iter += 1
     end 
-    return ar
+    return array
   end
 
 end
